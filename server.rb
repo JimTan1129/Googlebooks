@@ -5,10 +5,8 @@ get "/" do
   erb :home
 end
 
-get "about" do
-  erb :about
-end
-
-get "skills" do
-  erb :skills
+get "/results" do
+ @results = GoogleBooks.search("#{params[:search]}")
+ @first = @results.first
+ erb :results
 end
